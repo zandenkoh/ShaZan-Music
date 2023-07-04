@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,8 +126,12 @@
       <i class="fa-solid fa-backward" title="Previous" id="prev"></i>
       <i class="fa-solid fa-play play-button" title="Play" id="play"></i>
       <i class="fa-solid fa-forward" title="Next" id="next"></i>
+      <i class="fa-solid fa-random" title="Shuffle" id="shuffle" style="order: 4;"></i>
     </div>
-  </div>
+  
+
+
+
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
@@ -149,8 +156,8 @@
       padding: 10px;
       text-align: center;
       align-items: baseline;
-      position: absolute;
-      bottom: 5%;
+      position: relative;
+      bottom: 4%;
     }
 
 
@@ -172,14 +179,14 @@
       right: 0;
       min-width: 50%;
       min-height: 50%;
-      filter: blur(15px);
-      -webkit-filter: blur(50px);
+      filter: blur(500px);
+      -webkit-filter: blur(20px);
       transform: scale(1.1);
     }
 
     .container {
       background-color: #e7e7e7;
-      height: 500px;
+      height: 520px;
       width: 400px;
       border-radius: 20px;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -283,6 +290,13 @@
       position: relative;
       top: 3px;
     }
+
+  
+    #shuffle {
+      order: 4;
+      margin-left: auto;
+    }
+
   </style>
 
   <script>
@@ -320,9 +334,59 @@
         displayName: 'Cupid - Twin Ver.',
         cover: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
         artist: 'FIFTY FIFTY',
-}
+      },
 
-    ];
+      {
+        path: 'https://drive.google.com/uc?export=download&id=1gMvk-MbypZtp1AmHI_-OXHjpTWT4PbDf',
+        displayName: 'deja vu',
+        cover: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
+        artist: 'Olivia Rodrigo',
+      },
+        
+      {
+        path: 'https://drive.google.com/uc?export=download&id=15hXPghy0bv39aUvO0Zvl4SU6pK5Uiu4_',
+        displayName: 'Sunshine',
+        cover: 'https://www.filmmusicsite.com/images/covers/large/94638.jpg',
+        artist: 'Liam Payne',
+      },
+      
+      {
+        path: '"https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL"',
+        displayName: 'Call Me Maybe',
+        cover: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
+        artist: 'Carly Rae Jepson',
+      },
+
+      {
+        path: '"https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH"',
+        displayName: 'As It Was',
+        cover: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
+        artist: 'Harry Styles',
+      },
+
+      {
+        path: '"https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS"',
+        displayName: 'A Sky Full Of Stars',
+        cover: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
+        artist: 'Coldplay',
+      },
+      
+      {
+        path: '"https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-"',
+        displayName: 'I Wanna Be Yours',
+        cover: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
+        artist: 'Arctic Monkeys',
+      },
+      
+      {
+        path: '"https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB"',
+        displayName: 'Daylight',
+        cover: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
+        artist: 'David Kushner',
+      },
+
+
+      ];
 
     let musicIndex = 0;
     let isPlaying = false;
@@ -405,6 +469,54 @@
     music.addEventListener('ended', nextSong);
 
     loadSong(songs[musicIndex]);
+  
+    music.addEventListener('ended', nextSong);
+  
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const shuffleBtn = document.getElementById('shuffle');
+
+let isShuffled = false;
+
+function shuffleSongs() {
+  isShuffled = !isShuffled;
+  if (isShuffled) {
+    shuffleBtn.classList.add('active');
+    songs.sort(() => Math.random() - 0.5);
+  } else {
+    shuffleBtn.classList.remove('active');
+    songs.sort((a, b) => a.id - b.id);
+  }
+}
+
+shuffleBtn.addEventListener('click', shuffleSongs);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </script>
 
 <script src="//code.tidio.co/shdrlfokdt7wbrve4trxz4vvfkpsfiim.js" async></script>
@@ -425,3 +537,7 @@
 
 </body>
 </html>
+
+
+
+
