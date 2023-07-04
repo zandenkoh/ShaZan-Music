@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -193,9 +191,8 @@
       transition: all 0.5s ease;
     }
 
-    .container:hover {
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-    }
+  
+    
 
     .player-img {
       width: 300px;
@@ -311,6 +308,8 @@
       nextBtn = document.getElementById('next'),
       playBtn = document.getElementById('play'),
       background = document.getElementById('bg-img');
+    
+
 
     const music = new Audio();
 
@@ -351,35 +350,35 @@
       },
       
       {
-        path: '"https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL"',
+        path: 'https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL',
         displayName: 'Call Me Maybe',
         cover: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
         artist: 'Carly Rae Jepson',
       },
 
       {
-        path: '"https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH"',
+        path: 'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH',
         displayName: 'As It Was',
         cover: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
         artist: 'Harry Styles',
       },
 
       {
-        path: '"https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS"',
+        path: 'https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS',
         displayName: 'A Sky Full Of Stars',
         cover: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
         artist: 'Coldplay',
       },
       
       {
-        path: '"https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-"',
+        path: 'https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-',
         displayName: 'I Wanna Be Yours',
         cover: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
         artist: 'Arctic Monkeys',
       },
       
       {
-        path: '"https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB"',
+        path: 'https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB',
         displayName: 'Daylight',
         cover: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
         artist: 'David Kushner',
@@ -388,108 +387,77 @@
 
       ];
 
-    let musicIndex = 0;
-    let isPlaying = false;
+      let musicIndex = 0;
+let isPlaying = false;
 
-    function playSong() {
-      isPlaying = true;
-      playBtn.classList.replace('fa-play', 'fa-pause');
-      playBtn.setAttribute('title', 'Pause');
-      music.play();
-    }
-
-    function pauseSong() {
-      isPlaying = false;
-      playBtn.classList.replace('fa-pause', 'fa-play');
-      playBtn.setAttribute('title', 'Play');
-      music.pause();
-    }
-
-    function loadMusic(song) {
-  // Rest of the code
-  document.getElementById('cover-img').src = song.coverLink;
+function playSong() {
+  isPlaying = true;
+  playBtn.classList.replace('fa-play', 'fa-pause');
+  playBtn.setAttribute('title', 'Pause');
+  music.play();
 }
 
+function pauseSong() {
+  isPlaying = false;
+  playBtn.classList.replace('fa-pause', 'fa-play');
+  playBtn.setAttribute('title', 'Play');
+  music.pause();
+}
 
-    function loadSong(song) {
-      image.src = song.cover;
-      title.textContent = song.displayName;
-      artist.textContent = song.artist;
-      music.src = song.path;
-      background.src = song.cover;
+function loadMusic(song) {
+  // Set the cover link
+  image.src = song.coverLink;
+}
+
+function loadSong(song) {
+  image.src = song.cover;
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  music.src = song.path;
+  background.src = song.cover;
+}
+
+function prevSong() {
+  musicIndex--;
+  if (musicIndex < 0) {
+    musicIndex = songs.length - 1;
+  }
+  loadSong(songs[musicIndex]);
+  playSong();
+}
+
+function nextSong() {
+  musicIndex++;
+  if (musicIndex === songs.length) {
+    musicIndex = 0;
+  }
+  loadSong(songs[musicIndex]);
+  playSong();
+}
+
+function updateProgressBar(e) {
+  if (isPlaying) {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+
+    const durationMinutes = Math.floor(duration / 60);
+    let durationSeconds = Math.floor(duration % 60);
+    if (durationSeconds < 10) {
+      durationSeconds = `0${durationSeconds}`;
     }
 
-    function prevSong() {
-      musicIndex--;
-      if (musicIndex < 0) {
-        musicIndex = songs.length - 1;
-      }
-      loadSong(songs[musicIndex]);
-      playSong();
-    }
+    currentTimeEl.textContent = `${Math.floor(currentTime / 60)}:${Math.floor(currentTime % 60)}`;
+    durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+  }
+}
 
-    function nextSong() {
-      musicIndex++;
-      if (musicIndex === songs.length) {
-        musicIndex = 0;
-      }
-      loadSong(songs[musicIndex]);
-      playSong();
-    }
-
-    function updateProgressBar(e) {
-      if (isPlaying) {
-        const { duration, currentTime } = e.srcElement;
-        const progressPercent = (currentTime / duration) * 100;
-        progress.style.width = `${progressPercent}%`;
-
-        const durationMinutes = Math.floor(duration / 60);
-        let durationSeconds = Math.floor(duration % 60);
-        if (durationSeconds < 10) {
-          durationSeconds = `0${durationSeconds}`;
-        }
-
-        currentTimeEl.textContent = `${Math.floor(currentTime / 60)}:${Math.floor(currentTime % 60)}`;
-        durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
-      }
-    }
-
-    function setProgressBar(e) {
-      const width = this.clientWidth;
-      const clickX = e.offsetX;
-      const { duration } = music;
-      music.currentTime = (clickX / width) * duration;
-    }
-
-    playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
-    prevBtn.addEventListener('click', prevSong);
-    nextBtn.addEventListener('click', nextSong);
-    music.addEventListener('timeupdate', updateProgressBar);
-    playerProgress.addEventListener('click', setProgressBar);
-    music.addEventListener('ended', nextSong);
-
-    loadSong(songs[musicIndex]);
-  
-    music.addEventListener('ended', nextSong);
-  
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const shuffleBtn = document.getElementById('shuffle');
-
-let isShuffled = false;
+function setProgressBar(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const { duration } = music;
+  music.currentTime = (clickX / width) * duration;
+}
 
 function shuffleSongs() {
   isShuffled = !isShuffled;
@@ -502,21 +470,20 @@ function shuffleSongs() {
   }
 }
 
-shuffleBtn.addEventListener('click', shuffleSongs);
+playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+music.addEventListener('timeupdate', updateProgressBar);
+playerProgress.addEventListener('click', setProgressBar);
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+loadSong(songs[musicIndex]);
+
+music.addEventListener('ended', nextSong);
+
+const shuffleBtn = document.getElementById('shuffle');
+let isShuffled = false;
+
+shuffleBtn.addEventListener('click', shuffleSongs);
   </script>
 
 <script src="//code.tidio.co/shdrlfokdt7wbrve4trxz4vvfkpsfiim.js" async></script>
@@ -530,6 +497,196 @@ shuffleBtn.addEventListener('click', shuffleSongs);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the menu icon */
+    .menu-icon {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-icon.open span:nth-child(1),
+    .menu-icon.open span:nth-child(3) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    /* CSS styles for the side panel */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: #333;
+      color: #fff;
+      transition: left 0.3s ease;
+      border-radius: 15px;
+    }
+
+    .side-panel.open {
+      left: 0;
+    }
+
+    .side-panel ul {
+      list-style-type: none;
+      padding: 0;
+      padding-top: 30px;
+      margin: 20px;
+    }
+
+    .side-panel ul li {
+      margin-bottom: 10px;
+    }
+
+    .side-panel ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .side-panel ul li a:hover {
+      outline: 2px solid white;
+      border-radius: 5px;
+    }
+
+    /* CSS styles for the page content */
+    .page-content {
+      margin-left: 300px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu Icon -->
+  <button class="menu-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+<br>
+<br>
+  <!-- Side Panel -->
+  <div class="side-panel">
+    <button class="menu-icon close-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <br>
+    <ul>
+      <li><a href="page1.html">Page 1</a></li>
+      <li><a href="page2.html">Page 2</a></li>
+      <li><a href="page3.html">Page 3</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Your website content goes here -->
+  </div>
+
+  <!-- JavaScript to toggle the side panel -->
+  <script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const sidePanel = document.querySelector('.side-panel');
+    const closeIcon = sidePanel.querySelector('.close-icon');
+
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('open');
+      sidePanel.classList.toggle('open');
+    });
+
+    closeIcon.addEventListener('click', () => {
+      menuIcon.classList.remove('open');
+      sidePanel.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <footer>
   <p>&copy; 2023 ShaZan. All rights reserved.</p>
 </footer>
@@ -537,7 +694,3 @@ shuffleBtn.addEventListener('click', shuffleSongs);
 
 </body>
 </html>
-
-
-
-
