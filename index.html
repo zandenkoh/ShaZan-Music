@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>ShaZan-Music</title>
+  <title>ShaZan</title>
   <style>
     .suggest-widget {
       position: fixed;
@@ -82,70 +82,29 @@
 
 
 
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShaZan</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <title>ShaZan-Music</title>
-
   <style>
-    /* CSS styles here */
-  </style>
-</head>
-
-<body>
-
-  <div class="background">
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnZxbjFzcWwwYmhrZmN4dG81cW40cDdzbmwxZjJrenplcDJ3cm5wYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/JNy7DzgqUnh9p93aru/giphy.gif" id="cover-img">
-  </div>
-
-  <div class="container">
-    <div class="player-img">
-      <img src="https://4kwallpapers.com/images/wallpapers/ocean-waves-aerial-view-ocean-water-drone-photo-3665x2443-317.jpg" alt="" id="cover">
-    </div>
-
-    <h2 id="music-title"></h2>
-    <h3 id="music-artist"></h3>
-
-    <div class="player-progress" id="player-progress">
-      <div class="progress" id="progress"></div>
-      <div class="music-duration">
-        <span id="current-time">0:00</span>
-        <span id="duration">0:00</span>
-      </div>
-    </div>
-
-    <div class="player-controls">
-      <i class="fa-solid fa-backward" title="Previous" id="prev"></i>
-      <i class="fa-solid fa-play play-button" title="Play" id="play"></i>
-      <i class="fa-solid fa-forward" title="Next" id="next"></i>
-      <i class="fa-solid fa-random" title="Shuffle" id="shuffle" style="order: 4;"></i>
-    </div>
-  
-
-
-
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-
-    html {
-      box-sizing: border-box;
-    }
-
+    /* CSS styles */
     body {
       margin: 0;
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 12px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      font-family: Arial, sans-serif
+      background-color: #000000;
     }
 
     footer {
@@ -158,539 +117,529 @@
       bottom: 4%;
     }
 
-
-    .background {
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      z-index: -1;
-    }
-
-    .background img {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      min-width: 50%;
-      min-height: 50%;
-      filter: blur(500px);
-      -webkit-filter: blur(20px);
-      transform: scale(1.1);
-    }
-
     .container {
-      background-color: #e7e7e7;
-      height: 520px;
-      width: 400px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s ease;
-    }
-
-  
-    
-
-    .player-img {
-      width: 300px;
-      height: 300px;
-      position: relative;
-      top: -50px;
-      left: 50px;
-    }
-
-    .player-img img {
-  object-fit: cover;
-  border-radius: 20px;
-  height: 300px;
-  width: 300px;
-  opacity: 1;
-  box-shadow: 0 5px 30px 5px rgba(61, 61, 61, 0.5);
-  position: relative;
-}
-
-
-    .player-img:hover img {
-      box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
-    }
-
-    .player-img img.active {
-      width: 100%;
-      height: 100%;
-      transition: all 0.5s;
-      opacity: 1;
-    }
-
-    h2 {
-      font-size: 25px;
-      text-align: center;
-      font-weight: 500;
-      margin: 10px 0 0;
-    }
-
-    h3 {
-      font-size: 18px;
-      text-align: center;
-      font-weight: 500;
-      margin: 10px 0 0;
-    }
-
-    .player-progress {
-      background-color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 40px 20px 35px;
-      height: 6px;
-      width: 90%;
-    }
-
-    .progress {
-      background-color: #212121;
-      border-radius: 5px;
-      height: 100%;
-      width: 0%;
-      transition: width 0.1s linear;
-    }
-
-    .music-duration {
-      position: relative;
-      top: -25px;
       display: flex;
-      justify-content: space-between;
+      height: 100vh;
+      position: auto;
+      
     }
 
-    .player-controls {
+   
+    .sidebar {
+        width: 250px;
+      background-color: #000000;
+      
+      color: #000000;
+      padding: 20px;
       position: relative;
-      top: -15px;
-      left: 120px;
-      width: 200px;
     }
+     
 
-    .fa-solid {
-      font-size: 30px;
-      color: #666;
-      margin-right: 30px;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.3s ease;
-    }
+   
 
-    .fa-solid:hover {
-      filter: brightness(40%);
-    }
+    .sidebar-header {
+        font: roboto;
+        font-size: 50px;
 
-    .play-button {
-      font-size: 44px;
+      margin-bottom: 20px;
       position: relative;
-      top: 3px;
-    }
-
-  
-    #shuffle {
-      order: 4;
-      margin-left: auto;
-    }
-
-  </style>
-
-  <script>
-    const image = document.getElementById('cover'),
-      title = document.getElementById('music-title'),
-      artist = document.getElementById('music-artist'),
-      currentTimeEl = document.getElementById('current-time'),
-      durationEl = document.getElementById('duration'),
-      progress = document.getElementById('progress'),
-      playerProgress = document.getElementById('player-progress'),
-      prevBtn = document.getElementById('prev'),
-      nextBtn = document.getElementById('next'),
-      playBtn = document.getElementById('play'),
-      background = document.getElementById('bg-img');
-    
-
-
-    const music = new Audio();
-
-    const songs = [
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC',
-        displayName: 'Among Us - Trap Remix',
-        cover: 'https://i.scdn.co/image/ab67616d0000b273081ab39e5243d9edf97872d1',
-        artist: 'Leonz',
-      },
-    
-      {
-        path: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d',
-        displayName: 'Bang Bang',
-        cover: 'https://i.scdn.co/image/ab67616d0000b273930f686fe89425c7b6bf9a7d',
-        artist: 'Jessie J, Ariana Grande, Nicki Minaj',
-      },
-      
-      {
-        path: 'https://drive.google.com/uc?export=download&id=15WfT2xBAiNkHiCmrI1-8qGOUzymUar0B',
-        displayName: 'Cupid - Twin Ver.',
-        cover: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
-        artist: 'FIFTY FIFTY',
-      },
-
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1gMvk-MbypZtp1AmHI_-OXHjpTWT4PbDf',
-        displayName: 'deja vu',
-        cover: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
-        artist: 'Olivia Rodrigo',
-      },
-        
-      {
-        path: 'https://drive.google.com/uc?export=download&id=15hXPghy0bv39aUvO0Zvl4SU6pK5Uiu4_',
-        displayName: 'Sunshine',
-        cover: 'https://www.filmmusicsite.com/images/covers/large/94638.jpg',
-        artist: 'Liam Payne',
-      },
-      
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL',
-        displayName: 'Call Me Maybe',
-        cover: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
-        artist: 'Carly Rae Jepson',
-      },
-
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH',
-        displayName: 'As It Was',
-        cover: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
-        artist: 'Harry Styles',
-      },
-
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS',
-        displayName: 'A Sky Full Of Stars',
-        cover: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
-        artist: 'Coldplay',
-      },
-      
-      {
-        path: 'https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-',
-        displayName: 'I Wanna Be Yours',
-        cover: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
-        artist: 'Arctic Monkeys',
-      },
-      
-      {
-        path: 'https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB',
-        displayName: 'Daylight',
-        cover: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
-        artist: 'David Kushner',
-      },
-
-
-      ];
-
-      let musicIndex = 0;
-let isPlaying = false;
-
-function playSong() {
-  isPlaying = true;
-  playBtn.classList.replace('fa-play', 'fa-pause');
-  playBtn.setAttribute('title', 'Pause');
-  music.play();
-}
-
-function pauseSong() {
-  isPlaying = false;
-  playBtn.classList.replace('fa-pause', 'fa-play');
-  playBtn.setAttribute('title', 'Play');
-  music.pause();
-}
-
-function loadMusic(song) {
-  // Set the cover link
-  image.src = song.coverLink;
-}
-
-function loadSong(song) {
-  image.src = song.cover;
-  title.textContent = song.displayName;
-  artist.textContent = song.artist;
-  music.src = song.path;
-  background.src = song.cover;
-}
-
-function prevSong() {
-  musicIndex--;
-  if (musicIndex < 0) {
-    musicIndex = songs.length - 1;
-  }
-  loadSong(songs[musicIndex]);
-  playSong();
-}
-
-function nextSong() {
-  musicIndex++;
-  if (musicIndex === songs.length) {
-    musicIndex = 0;
-  }
-  loadSong(songs[musicIndex]);
-  playSong();
-}
-
-function updateProgressBar(e) {
-  if (isPlaying) {
-    const { duration, currentTime } = e.srcElement;
-    const progressPercent = (currentTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-
-    const durationMinutes = Math.floor(duration / 60);
-    let durationSeconds = Math.floor(duration % 60);
-    if (durationSeconds < 10) {
-      durationSeconds = `0${durationSeconds}`;
-    }
-
-    currentTimeEl.textContent = `${Math.floor(currentTime / 60)}:${Math.floor(currentTime % 60)}`;
-    durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
-  }
-}
-
-function setProgressBar(e) {
-  const width = this.clientWidth;
-  const clickX = e.offsetX;
-  const { duration } = music;
-  music.currentTime = (clickX / width) * duration;
-}
-
-function shuffleSongs() {
-  isShuffled = !isShuffled;
-  if (isShuffled) {
-    shuffleBtn.classList.add('active');
-    songs.sort(() => Math.random() - 0.5);
-  } else {
-    shuffleBtn.classList.remove('active');
-    songs.sort((a, b) => a.id - b.id);
-  }
-}
-
-playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
-music.addEventListener('timeupdate', updateProgressBar);
-playerProgress.addEventListener('click', setProgressBar);
-
-loadSong(songs[musicIndex]);
-
-music.addEventListener('ended', nextSong);
-
-const shuffleBtn = document.getElementById('shuffle');
-let isShuffled = false;
-
-shuffleBtn.addEventListener('click', shuffleSongs);
-  </script>
-
-<script src="//code.tidio.co/shdrlfokdt7wbrve4trxz4vvfkpsfiim.js" async></script>
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    /* CSS styles for the menu icon */
-    .menu-icon {
-      position: fixed;
       top: 10px;
-      left: 10px;
-      z-index: 9999;
-      width: 30px;
-      height: 30px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
+      left: 30px;
+      color: white;
+      font: Gotham;
     }
+    
+    
 
-    .menu-icon span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
-      margin-bottom: 4px;
-      transition: transform 0.3s ease;
-    }
+    
 
-    .menu-icon.open span:nth-child(1),
-    .menu-icon.open span:nth-child(3) {
-      transform: translateY(6px) rotate(45deg);
-    }
+    
+    
 
-    .menu-icon.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    /* CSS styles for the side panel */
-    .side-panel {
-      position: fixed;
-      top: 0;
-      left: -300px;
-      width: 300px;
-      height: 100%;
-      background-color: #333;
-      color: #fff;
-      transition: left 0.3s ease;
-      border-radius: 15px;
-    }
-
-    .side-panel.open {
-      left: 0;
-    }
-
-    .side-panel ul {
-      list-style-type: none;
+    .sidebar-menu {
+      list-style: none;
       padding: 0;
-      padding-top: 30px;
-      margin: 20px;
+      margin: 0;
     }
 
-    .side-panel ul li {
+    .sidebar-menu-item {
       margin-bottom: 10px;
     }
 
-    .side-panel ul li a {
+    .sidebar-menu-link {
       color: #fff;
       text-decoration: none;
-      font-size: 18px;
-      transition: background-color 0.3s ease;
     }
 
-    .side-panel ul li a:hover {
-      outline: 2px solid white;
-      border-radius: 5px;
-    }
 
-    /* CSS styles for the page content */
-    .page-content {
-      margin-left: 300px;
+
+    .main-content {
+      flex: 1;
+      background-color: #000000;
+      color: #fff;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      position: auto;
     }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #040404;
+      color: #fff;
+      padding: 8px;
+      border-radius: 20px;
+      width: 400px;
+      margin-bottom: 20px;
+      transition: width 0.3s;
+      position: relative;
+      outline-color: #ffffff;
+      outline-width: 2px;
+      height: 50px;
+    }
+
+    .search-bar-icon {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .search-bar-input {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      width: 100%;
+      
+    }
+
+    .guest-icon {
+      margin-left: auto;
+      font-size: 24px;
+    }
+
+    .song-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .song-list-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .song-list-item:hover {
+      background-color: #282828;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .song-list-item.active {
+      background-color: #4535ec;
+      background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
+    }
+
+    .song-list-item-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .song-list-item-info {
+      flex: 1;
+    }
+
+    .song-list-item-title {
+      font-weight: bold;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #212121;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .progress-bar-filled {
+      height: 100%;
+      background: linear-gradient(to right, #1900ff, #ae00ff, #ff00aa);
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    .progress-bar:hover {
+        cursor: pointer;
+    }
+
+    .progress-bar-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .progress-bar-time span:first-child {
+      order: 1;
+    }
+
+    .progress-bar-time span:last-child {
+      order: 3;
+    }
+
+    .control-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      background-color: #000000;
+    }
+
+    .control-panel-button {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background-color: #525252;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.5s;
+      
+    }
+
+    .control-panel-button:hover {
+        background-color: #8000ff;
+    }
+
+    
+
+
   </style>
 </head>
+
 <body>
-  <!-- Menu Icon -->
-  <button class="menu-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-<br>
-<br>
-  <!-- Side Panel -->
-  <div class="side-panel">
-    <button class="menu-icon close-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <div class="container">
     <br>
-    <ul>
-      <li><a href="page1.html">Page 1</a></li>
-      <li><a href="page2.html">Page 2</a></li>
-      <li><a href="page3.html">Page 3</a></li>
-    </ul>
+    <div class="sidebar">
+        <!-- Sidebar content -->
+        
+        <h1 class="sidebar-header gradient-text">ShaZan</h1>
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a></li>
+          
+        </ul>
+    </div>
+    <div class="main-content">
+      <!-- Main content -->
+      <div class="search-bar">
+        <i class="fa fa-search search-bar-icon"></i>
+        <input type="text" class="search-bar-input">
+        <i class="fa fa-times search-bar-cross-icon hide"></i>
+      </div>
+      <br>
+      <ul class="song-list">
+        <!-- Song list items willbe dynamically generated here -->
+      </ul>
+      <div class="progress-bar">
+        <div class="progress-bar-filled"></div>
+        <div class="progress-bar-time">
+          <span class="current-time">0:00</span>
+          <span class="total-duration">0:00</span>
+        </div>
+      </div>
+      <br>
+      <div class="control-panel">
+        <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
+        <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
+        <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
+      </div>
+    </div>
   </div>
 
-  <!-- Page Content -->
-  <div class="page-content">
-    <!-- Your website content goes here -->
-  </div>
-
-  <!-- JavaScript to toggle the side panel -->
   <script>
-    const menuIcon = document.querySelector('.menu-icon');
-    const sidePanel = document.querySelector('.side-panel');
-    const closeIcon = sidePanel.querySelector('.close-icon');
+    const songListItems = [
+      {
+        title: 'Among Us - Trap Remix',
+        artist: 'Leonz',
+        coverURL: 'https://i.scdn.co/image/ab67616d0000b273081ab39e5243d9edf97872d1',
+        songURL: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC'
+      },
+      {
+        title: 'Bang Bang',
+        artist: 'Jessie J, Ariana Grande, Nicki Minaj',
+        coverURL: 'https://i.scdn.co/image/ab67616d0000b273930f686fe89425c7b6bf9a7d',
+        songURL: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d'
+      },
+      {
+        title: 'Cupid - Twin Ver.',
+        artist: 'FIFTY FIFTY',
+        coverURL: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=15WfT2xBAiNkHiCmrI1-8qGOUzymUar0B'
+      },
+      {
+        title: 'deja vu',
+        artist: 'Olivia Rodrigo',
+        coverURL: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
+        songURL: 'https://drive.google.com/uc?export=download&id=1gMvk-MbypZtp1AmHI_-OXHjpTWT4PbDf'
+      },
+      {
+        title: 'Sunshine',
+        artist: 'Liam Payne',
+        coverURL: 'https://www.filmmusicsite.com/images/covers/large/94638.jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=15hXPghy0bv39aUvO0Zvl4SU6pK5Uiu4_'
+      },
+      {
+        title: 'Call Me Maybe',
+        artist: 'Carly Rae Jepson',
+        coverURL: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
+        songURL: 'https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL'
+      },
+      {
+        title: 'As It Was',
+        artist: 'Harry Styles',
+        coverURL: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH'
+      },
+      {
+        title: 'A Sky Full Of Stars',
+        artist: 'Coldplay',
+        coverURL: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
+        songURL: 'https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS'
+      },
+      {
+        title: 'I Wanna Be Yours',
+        artist: 'Arctic Monkeys',
+        coverURL: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-'
+      },
+      {
+        title: 'Daylight',
+        artist: 'David Kushner',
+        coverURL: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
+        songURL: 'https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB'
+      },
+      {
+        title: 'Blueberry Faygo',
+        artist: 'Lil Mosey',
+        coverURL: 'https://i1.sndcdn.com/artworks-dIM002P13u4G-0-t500x500.jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=1-7u4DijHkkL8WbeI6L9yy5yBEpvj402m'
+      }
+      // Add more song objects as needed
+    ];
 
-    menuIcon.addEventListener('click', () => {
-      menuIcon.classList.toggle('open');
-      sidePanel.classList.toggle('open');
+    const songList = document.querySelector('.song-list');
+    const previousButton = document.querySelector('.previous-button');
+    const playPauseButton = document.querySelector('.play-pause-button');
+    const nextButton = document.querySelector('.next-button');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressBarFilled = document.querySelector('.progress-bar-filled');
+    const currentTime = document.querySelector('.current-time');
+    const totalDuration = document.querySelector('.total-duration');
+
+    let currentSongIndex = 0;
+    let isPlaying = false;
+    let audio = new Audio();
+
+    // Function to create a song list item
+    
+    function createSongListItem(song, index) {
+      const listItem = document.createElement('li');
+      listItem.classList.add('song-list-item');
+      if (index === currentSongIndex) {
+        listItem.classList.add('active');
+      }
+
+      const image = document.createElement('img');
+      image.classList.add('song-list-item-image');
+      image.src = song.coverURL;
+      image.alt = 'Song Cover';
+      listItem.appendChild(image);
+
+      const infoDiv = document.createElement('div');
+      infoDiv.classList.add('song-list-item-info');
+      listItem.appendChild(infoDiv);
+
+      const titleDiv = document.createElement('div');
+      titleDiv.classList.add('song-list-item-title');
+      titleDiv.textContent = song.title;
+      infoDiv.appendChild(titleDiv);
+
+      const artistDiv = document.createElement('div');
+      artistDiv.classList.add('song-list-item-artist');
+      artistDiv.textContent = song.artist;
+      infoDiv.appendChild(artistDiv);
+
+      listItem.addEventListener('click', () => {
+        if (index !== currentSongIndex) {
+          loadSong(index);
+          playSong();
+        }
+      });
+
+      return listItem;
+    }
+
+    // Function to render the song list
+    function renderSongList() {
+      songListItems.forEach((song, index) => {
+        const listItem = createSongListItem(song, index);
+        songList.appendChild(listItem);
+      });
+    }
+
+    // Function to load a song
+    function loadSong(songIndex) {
+      const song = songListItems[songIndex];
+      const image = document.querySelector('.song-list-item-image');
+      const title = document.querySelector('.song-list-item-title');
+      const artist = document.querySelector('.song-list-item-artist');
+
+      audio.src = song.songURL;
+      image.src = song.coverURL;
+      title.textContent = song.title;
+      artist.textContent = song.artist;
+      progressBarFilled.style.width = '0%';
+
+      audio.addEventListener('loadedmetadata', () => {
+        totalDuration.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBarFilled.style.width = `${progress}%`;
+        currentTime.textContent = formatTime(audio.currentTime);
+      });
+
+      audio.addEventListener('ended', () => {
+        playNextSong();
+      });
+
+      currentSongIndex = songIndex;
+      highlightCurrentSong();
+    }
+
+    // Function to play the current song
+    function playSong() {
+      audio.play();
+      isPlaying = true;
+      playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+    }
+
+    // Function to pause the current song
+    function pauseSong() {
+      audio.pause();
+      isPlaying = false;
+      playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
+    }
+
+    // Function to play the next song
+    function playNextSong() {
+      currentSongIndex = (currentSongIndex + 1) % songListItems.length;
+      loadSong(currentSongIndex);
+      playSong();
+    }
+
+    // Function to play the previous song
+    function playPreviousSong() {
+      currentSongIndex = (currentSongIndex - 1 + songListItems.length) % songListItems.length;
+      loadSong(currentSongIndex);
+      playSong();
+    }
+
+    // Function to format time in minutes and seconds
+    function formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    // Function to highlight the current song in the list
+    function highlightCurrentSong() {
+      const songItems = document.querySelectorAll('.song-list-item');
+      songItems.forEach((item, index) => {
+        if (index === currentSongIndex) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Event listener for previous button
+    previousButton.addEventListener('click', () => {
+      playPreviousSong();
     });
 
-    closeIcon.addEventListener('click', () => {
-      menuIcon.classList.remove('open');
-      sidePanel.classList.remove('open');
+    // Event listener for play/pause button
+    playPauseButton.addEventListener('click', () => {
+      if (isPlaying) {
+        pauseSong();
+      } else {
+        playSong();
+      }
     });
+
+    // Event listener for next button
+    nextButton.addEventListener('click', () => {
+      playNextSong();
+    });
+
+    // Event listener for progress bar
+    progressBar.addEventListener('click', (event) => {
+      const progressBarWidth = progressBar.clientWidth;
+      const clickPosition = event.offsetX;
+      const progress = (clickPosition / progressBarWidth) * 100;
+      progressBarFilled.style.width = `${progress}%`;
+      audio.currentTime = (audio.duration * progress) / 100;
+    });
+
+    // Event listener for search bar
+    const searchInput = document.querySelector('.search-bar-input');
+    const searchCrossIcon = document.querySelector('.search-bar-cross-icon');
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const songItems = document.querySelectorAll('.song-list-item');
+      songItems.forEach((item) => {
+        const title = item.querySelector('.song-list-item-title').textContent.toLowerCase();
+        const artist = item.querySelector('.song-list-item-artist').textContent.toLowerCase();
+        if (title.includes(searchTerm) || artist.includes(searchTerm)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (searchTerm !== '') {
+        searchCrossIcon.classList.remove('hide');
+      } else {
+        searchCrossIcon.classList.add('hide');
+      }
+    });
+
+    searchCrossIcon.addEventListener('click', () => {
+      searchInput.value = '';
+      searchCrossIcon.classList.add('hide');
+      const songItems = document.querySelectorAll('.song-list-item');
+      songItems.forEach((item) => {
+        item.style.display = 'flex';
+      });
+    });
+
+    // Initial rendering of the song list
+    renderSongList();
+
+    // Load the first song
+    loadSong(currentSongIndex);
   </script>
 </body>
-</html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<footer>
-  <p>&copy; 2023 ShaZan. All rights reserved.</p>
-</footer>
-
-
-</body>
 </html>
