@@ -90,6 +90,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,261 +128,356 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* CSS styles */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Ubuntu', sans-serif;
-      background-color: #000000;
-    }
+    /* CSS styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+}
 
-    
-    .container {
-      display: flex;
-      height: 100vh;
-      position: relative; /* Change position to "relative" */
-      overflow: hidden; /* Add overflow property */
-    }
+.container {
+  display: flex;
+  height: 100vh;
+  position: relative; /* Change position to "relative" */
+  overflow: hidden; /* Add overflow property */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px;
+  position: relative;
+}
+
+.sidebar-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #040404;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  transition: width 0.3s;
+  width: 500px;
+}
+
+.search-bar-icon {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.search-bar-input {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  width: 100%;
+}
+
+.guest-icon {
+  margin-left: auto;
+  font-size: 24px;
+}
+
+.song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.song-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.song-list-item:hover {
+  background-color: #282828;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.song-list-item.active {
+  background-color: #4535ec;
+  background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
+}
+
+.song-list-item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.song-list-item-info {
+  flex: 1;
+}
+
+.song-list-item-title {
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #212121;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.progress-bar-filled {
+  height: 100%;
+  background: linear-gradient(to right, #1900ff, #ae00ff, #ff00aa);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.progress-bar-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.progress-bar-time span:first-child {
+  order: 1;
+}
+
+.progress-bar-time span:last-child {
+  order: 3;
+}
+
+.control-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.control-panel-button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #525252;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.control-panel-button:hover {
+  background-color: #8000ff;
+}
 
 
-   
-    .sidebar {
-        width: 250px;
-      background-color: #000000;
-      
-      color: #000000;
-      padding: 20px;
-      position: relative;
-    }
-     
-
-   
-
-    .sidebar-header {
-        font: roboto;
-        font-size: 50px;
-
-      margin-bottom: 20px;
-      position: relative;
-      top: 10px;
-      left: 30px;
-      color: white;
-      font: Gotham;
-    }
-    
-    
-
-    
-
-    
-    
-
-    .sidebar-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-menu-item {
-      margin-bottom: 10px;
-    }
-
-    .sidebar-menu-link {
-      color: #fff;
-      text-decoration: none;
-    }
 
 
 
-    .main-content {
-      flex: 1;
-      background-color: #000000;
-      color: #fff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      position: auto;
-    }
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-      background-color: #040404;
-      color: #fff;
-      padding: 8px;
-      border-radius: 20px;
-      width: 400px;
-      margin-bottom: 20px;
-      transition: width 0.3s;
-      position: relative;
-      outline-color: #898989;
-      outline-width: 2px;
-      height: 50px;
-    }
 
-    .search-bar-icon {
-      margin-right: 8px;
-      cursor: pointer;
-    }
 
-    .search-bar-input {
-      background-color: transparent;
-      border: none;
-      color: #fff;
-      width: 100%;
-      
-    }
 
-    .guest-icon {
-      margin-left: auto;
-      font-size: 24px;
-    }
 
-    .song-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      flex: 1;
-      overflow-y: auto;
-    }
 
-    .song-list-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 8px;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
 
-    .song-list-item:hover {
-      background-color: #282828;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
 
-    .song-list-item.active {
-      background-color: #4535ec;
-      background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
-    }
 
-    .song-list-item-image {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
 
-    .song-list-item-info {
-      flex: 1;
-    }
 
-    .song-list-item-title {
-      font-weight: bold;
-    }
 
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background-color: #212121;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      position: relative;
-    }
 
-    .progress-bar-filled {
-      height: 100%;
-      background: linear-gradient(to right, #1900ff, #ae00ff, #ff00aa);
-      border-radius: 4px;
-      transition: width 0.3s;
-    }
 
-    .progress-bar:hover {
-        cursor: pointer;
-    }
 
-    .progress-bar-time {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #fff;
-    }
 
-    .progress-bar-time span:first-child {
-      order: 1;
-    }
 
-    .progress-bar-time span:last-child {
-      order: 3;
-    }
 
-    .control-panel {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      background-color: #000000;
-    }
 
-    .control-panel-button {
-      padding: 10px 20px;
-      border-radius: 30px;
-      background-color: #525252;
-      color: #fff;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.5s;
-      
-    }
 
-    .control-panel-button:hover {
-        background-color: #8000ff;
-    }
 
-    
+
+
+
+
+
+
+
+
+
 
 
   </style>
 </head>
 
+
 <body>
-  <div class="container">
-    <br>
-    <div class="sidebar">
+    <div class="container">
+      <div class="sidebar">
         <!-- Sidebar content -->
-        
         <h1 class="sidebar-header">ShaZan</h1>
         <ul class="sidebar-menu">
-          <li class="sidebar-menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a></li>
-          
+          <li class="sidebar-menu-item">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a>
+            
+        
+          </li>
         </ul>
-    </div>
-    <div class="main-content">
-      <!-- Main content -->
-      <div class="search-bar">
-        <i class="fa fa-search search-bar-icon"></i>
-        <input type="text" class="search-bar-input">
-        <i class="fa fa-times search-bar-cross-icon hide"></i>
       </div>
-      <br>
-      <ul class="song-list">
-        <!-- Song list items willbe dynamically generated here -->
-      </ul>
-      <div class="progress-bar">
-        <div class="progress-bar-filled"></div>
-        <div class="progress-bar-time">
-          <span class="current-time">0:00</span>
-          <span class="total-duration">0:00</span>
+      <div class="main-content">
+        <!-- Main content -->
+        <div class="search-bar">
+          <i class="fa fa-search search-bar-icon"></i>
+          <input type="text" class="search-bar-input">
+          <i class="fa fa-times search-bar-cross-icon hide"></i>
+        </div>
+        <ul class="song-list">
+          <!-- Song list items will be dynamically generated here -->
+        </ul>
+        <div class="progress-bar">
+          <div class="progress-bar-filled"></div>
+          <div class="progress-bar-time">
+            <span class="current-time">0:00</span>
+            <span class="total-duration">0:00</span>
+          </div>
+        </div>
+        <div class="control-panel">
+          <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
+          <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
+          <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
         </div>
       </div>
-      <br>
-      <div class="control-panel">
-        <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
-        <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
-        <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
-      </div>
     </div>
-  </div>
+  
+    
+  
+
+  
+  
+  
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+      checkAuthentication();
+      
+      
+      
+      
+      function checkAuthentication() {
+      // Read the cookie
+      const cookies = document.cookie.split(";").map(cookie => cookie.trim());
+      const authenticatedCookie = cookies.find(cookie => cookie.startsWith("authenticated="));
+      
+      
+      // Check if the authenticated cookie exists and has a value of "true"
+      const isAuthenticated = authenticatedCookie && authenticatedCookie.split("=")[1] === "true";
+      
+      
+      // If the user is not authenticated, redirect them to the login page
+      if (!isAuthenticated) {
+      window.location.href = "https://zandenkoh.github.io/ShaZan-Music/Login.html"; // Replace "login.html" with the actual login page URL
+      }
+      }
+      
+      
+      
+      
+      // After logout or when the website is closed
+      document.cookie = "authenticated=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear the "authenticated" cookie
+      
+      
+      
+      
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script>
     const songListItems = [
@@ -632,7 +755,16 @@
     // Load the first song
     loadSong(currentSongIndex);
   </script>
+
+
+
+
+  
+
+
+
+    
+  
 </body>
 
 </html>
-
