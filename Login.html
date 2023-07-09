@@ -337,3 +337,150 @@ button.ghost {
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .music-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        .music-button.hidden {
+            display: none;
+        }
+
+        canvas {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body onclick="startMusic()">
+    <canvas id="visualizer"></canvas>
+    <button id="music-toggle" class="music-button" onclick="toggleMusic()">
+        <i class="fas fa-play"></i>
+        <i class="fas fa-pause"></i>
+    </button>
+    <audio id="background-music" src="onlymp3.to - Call Me Maybe-dlObDivWgx8-192k-1688437018 - Thaddeus Seow Zhe Xun (Chs).mp3" loop></audio>
+
+    <script>
+        const musicToggle = document.getElementById('music-toggle');
+        const visualizerCanvas = document.getElementById('visualizer');
+        const canvasContext = visualizerCanvas.getContext('2d');
+        let audioContext;
+        let analyser;
+        let bufferLength;
+        let dataArray;
+        let isMusicPlaying = false;
+
+        musicToggle.addEventListener('click', toggleMusic);
+
+        function startMusic() {
+            if (!isMusicPlaying) {
+                isMusicPlaying = true;
+
+                const backgroundMusic = document.getElementById('background-music');
+                backgroundMusic.play();
+
+                musicToggle.classList.add('hidden');
+
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+
+                const source = audioContext.createMediaElementSource(backgroundMusic);
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+
+                analyser.fftSize = 256;
+
+                bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+
+                visualize();
+            }
+        }
+
+        function visualize() {
+            const WIDTH = visualizerCanvas.width;
+            const HEIGHT = visualizerCanvas.height;
+
+            canvasContext.clearRect(0, 0, WIDTH, HEIGHT);
+
+            function draw() {
+                requestAnimationFrame(draw);
+
+                analyser.getByteFrequencyData(dataArray);
+
+                const barWidth = (WIDTH / bufferLength) * 2.5;
+                const barSpacing = 1;
+
+                canvasContext.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+                for (let i = 0; i < bufferLength; i++) {
+                    const barHeight = (dataArray[i] / 255) * HEIGHT;
+
+                    const x = i * (barWidth + barSpacing);
+                    const y = HEIGHT - barHeight;
+
+                    canvasContext.fillStyle = 'rgb(0, 153, 255)';
+                    canvasContext.fillRect(x, y, barWidth, barHeight);
+                }
+            }
+
+            draw();
+        }
+
+        function toggleMusic() {
+            // No need to do anything
+        }
+    </script>
+</body>
+</html>
