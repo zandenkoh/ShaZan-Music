@@ -47,6 +47,43 @@
   </a>
 
   <!-- Your website scripts -->
+
+
+
+  <script>
+
+
+    checkAuthentication();
+    
+    
+    
+    
+    function checkAuthentication() {
+    // Read the cookie
+    const cookies = document.cookie.split(";").map(cookie => cookie.trim());
+    const authenticatedCookie = cookies.find(cookie => cookie.startsWith("authenticated="));
+    
+    
+    // Check if the authenticated cookie exists and has a value of "true"
+    const isAuthenticated = authenticatedCookie && authenticatedCookie.split("=")[1] === "true";
+    
+    
+    // If the user is not authenticated, redirect them to the login page
+    if (!isAuthenticated) {
+    window.location.href = "https://zandenkoh.github.io/ShaZan-Music/Login.html"; // Replace "login.html" with the actual login page URL
+    }
+    }
+    
+    
+    
+    
+    // After logout or when the website is closed
+    document.cookie = "authenticated=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear the "authenticated" cookie
+    
+    
+    
+    
+    </script>
 </body>
 
 </html>
@@ -73,6 +110,155 @@
 
 
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reload Popup</title>
+  <style>
+    
+  
+    .reload-popup {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 40%;
+      left: 35%;
+      color: #000000;
+      animation: slide-down 0.5s ease-in-out;
+    }
+
+    @keyframes slide-down {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .popup-content {
+      max-width: 300px;
+      background-color: #1f2c3b;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .popup-message {
+      margin-bottom: 20px;
+      font-size: larger;
+      margin-bottom: 10px;
+    }
+
+    .popup-button-container {
+      
+      justify-content: static;
+      position: static;
+      margin-bottom: 50px;
+      
+    }
+
+    .popup-acknowledge-button {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background-color: #525252;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0s;
+      margin-bottom: 20px;
+    }
+
+    .popup-acknowledge-button:hover {
+      background-color: #8000ff;
+    }
+  </style>
+</head>
+<body>
+  <div id="reload-popup" class="reload-popup">
+    <div class="popup-content">
+      <div class="popup-message">Next update: 10 August 2023</div>
+      
+        <div class="popup-button-container">
+          <button class="popup-acknowledge-button">OK</button>
+        </div>
+      
+      
+    </div>
+  </div>
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('reload-popup');
+      const acknowledgeButton = document.querySelector('.popup-acknowledge-button');
+
+      // Show the popup on page load
+      popup.style.display = 'flex';
+
+      // Remove blur effect and close the popup when the acknowledge button is clicked
+      acknowledgeButton.addEventListener('click', function() {
+        popup.style.animation = 'slide-up 0.1s ease-in-out';
+        setTimeout(() => {
+          popup.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Enable scrolling
+        }, 500);
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
 
 
 
@@ -129,214 +315,273 @@
   <style>
     /* CSS styles */
     /* CSS styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #000000;
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      position: relative; /* Change position to "relative" */
+      overflow: hidden; /* Add overflow property */
+      position: fixed;
+      width: 100%;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 20px;
+      position: relative;
+    }
+
+    .sidebar-header {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-menu-item {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-menu-link {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .main-content {
+      flex: 1;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #040404;
+      color: #ffffff;
+      padding: 8px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      transition: width 0.3s;
+      width: 500px;
+    }
+
+    .search-bar-icon {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .search-bar-input {
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      width: 100%;
+    }
+
+    .guest-icon {
+      margin-left: auto;
+      font-size: 24px;
+    }
+
+    .song-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .song-list-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .song-list-item:hover {
+      background-color: #282828;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .song-list-item.active {
+      background-color: #4535ec;
+      background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
+    }
+
+    .song-list-item-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .song-list-item-info {
+      flex: 1;
+    }
+
+    .song-list-item-title {
+      font-weight: bold;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #212121;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .progress-bar-filled {
+      height: 100%;
+      background: linear-gradient(to right, #1900ff, #ae00ff, #ff00aa);
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    .progress-bar-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    .progress-bar-time span:first-child {
+      order: 1;
+    }
+
+    .progress-bar-time span:last-child {
+      order: 3;
+    }
+
+    .control-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .control-panel-button {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background-color: #525252;
+      color: #ffffff;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.5s;
+    }
+
+    .control-panel-button:hover {
+      background-color: #8000ff;
+    }
+
+    /* Popup styles */
+    .popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0; /* Changed back to left */
+  width: 100%; /* Changed width to 100% */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: slide-in 0.5s ease-in-out;
+
 }
 
-.container {
+@keyframes slide-in {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+.popup-content {
   display: flex;
-  height: 100vh;
-  position: relative; /* Change position to "relative" */
-  overflow: hidden; /* Add overflow property */
+  max-width: 100%;
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font: arial;
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 20px;
-  position: relative;
+.popup-cover {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  
 }
 
-.sidebar-header {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
 
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.sidebar-menu-item {
-  margin-bottom: 10px;
-}
-
-.sidebar-menu-link {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.main-content {
+.popup-info {
   flex: 1;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  box-shadow: -2px 0 4px rgba(255, 255, 255, 0.2);
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: #040404;
-  color: #ffffff;
-  padding: 8px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  transition: width 0.3s;
-  width: 500px;
-}
-
-.search-bar-icon {
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.search-bar-input {
-  background-color: transparent;
-  border: none;
-  color: #ffffff;
-  width: 100%;
-}
-
-.guest-icon {
-  margin-left: auto;
+.popup-artist {
   font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.song-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex: 1;
+.popup-title {
+  font-size: 16px;
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup-lyrics {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin-top: 20px;
   overflow-y: auto;
 }
 
-.song-list-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
 
-.song-list-item:hover {
-  background-color: #282828;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
-.song-list-item.active {
-  background-color: #4535ec;
-  background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
-}
-
-.song-list-item-image {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-.song-list-item-info {
-  flex: 1;
-}
-
-.song-list-item-title {
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 50px;
   font-weight: bold;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background-color: #212121;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.progress-bar-filled {
-  height: 100%;
-  background: linear-gradient(to right, #1900ff, #ae00ff, #ff00aa);
-  border-radius: 4px;
-  transition: width 0.3s;
-}
-
-.progress-bar-time {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
+  cursor: pointer;
   color: #ffffff;
 }
-
-.progress-bar-time span:first-child {
-  order: 1;
-}
-
-.progress-bar-time span:last-child {
-  order: 3;
-}
-
-.control-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.control-panel-button {
-  padding: 10px 20px;
-  border-radius: 30px;
-  background-color: #525252;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.5s;
-}
-
-.control-panel-button:hover {
-  background-color: #8000ff;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -344,160 +589,86 @@ body {
   </style>
 </head>
 
-
 <body>
-    <div class="container">
-      <div class="sidebar">
-        <!-- Sidebar content -->
-        <h1 class="sidebar-header">ShaZan</h1>
-        <ul class="sidebar-menu">
-          <li class="sidebar-menu-item">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a>
-            
-        
-          </li>
-        </ul>
+  <div class="container">
+    <div class="sidebar">
+      <!-- Sidebar content -->
+      <h1 class="sidebar-header">ShaZan</h1>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item">
+          <ahref="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <!-- Main content -->
+      <div class="search-bar">
+        <i class="fa fa-search search-bar-icon"></i>
+        <input type="text" class="search-bar-input">
+        <i class="fa fa-times search-bar-cross-icon hide"></i>
       </div>
-      <div class="main-content">
-        <!-- Main content -->
-        <div class="search-bar">
-          <i class="fa fa-search search-bar-icon"></i>
-          <input type="text" class="search-bar-input">
-          <i class="fa fa-times search-bar-cross-icon hide"></i>
+      <ul class="song-list">
+        <!-- Song list items will be dynamically generated here -->
+      </ul>
+      <div class="progress-bar">
+        <div class="progress-bar-filled"></div>
+        <div class="progress-bar-time">
+          <span class="current-time">0:00</span>
+          <span class="total-duration">0:00</span>
         </div>
-        <ul class="song-list">
-          <!-- Song list items will be dynamically generated here -->
-        </ul>
-        <div class="progress-bar">
-          <div class="progress-bar-filled"></div>
-          <div class="progress-bar-time">
-            <span class="current-time">0:00</span>
-            <span class="total-duration">0:00</span>
-          </div>
-        </div>
-        <div class="control-panel">
-          <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
-          <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
-          <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
-        </div>
+      </div>
+      <div class="control-panel">
+        <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
+        <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
+        <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
+        <button class="control-panel-button view-button" onclick="showPopup()"><i class="fa fa-eye"></i> View</button>
       </div>
     </div>
-  
-    
-  
-
-  
-  
-  
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 
   
 
 
 
-
-
-
-
-
-
-    <script>
-
-
-      checkAuthentication();
-      
-      
-      
-      
-      function checkAuthentication() {
-      // Read the cookie
-      const cookies = document.cookie.split(";").map(cookie => cookie.trim());
-      const authenticatedCookie = cookies.find(cookie => cookie.startsWith("authenticated="));
-      
-      
-      // Check if the authenticated cookie exists and has a value of "true"
-      const isAuthenticated = authenticatedCookie && authenticatedCookie.split("=")[1] === "true";
-      
-      
-      // If the user is not authenticated, redirect them to the login page
-      if (!isAuthenticated) {
-      window.location.href = "https://zandenkoh.github.io/ShaZan-Music/Login.html"; // Replace "login.html" with the actual login page URL
-      }
-      }
-      
-      
-      
-      
-      // After logout or when the website is closed
-      document.cookie = "authenticated=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear the "authenticated" cookie
-      
-      
-      
-      
-      </script>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <div class="popup-cover"></div>
+      <div class="popup-info">
+        <h2 class="popup-artist"></h2>
+        <p class="popup-title"></p>
+        <div class="popup-lyrics"></div>
+      </div>
+      <div class="popup-close" onclick="closePopup()">&times;</div>
+    </div>
+  </div>
+  
+  
+  
 
 
   <script>
+    // Existing code here...
     const songListItems = [
       {
         title: 'Among Us - Trap Remix',
         artist: 'Leonz',
         coverURL: 'https://i.scdn.co/image/ab67616d0000b273081ab39e5243d9edf97872d1',
-        songURL: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC'
+        songURL: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC',
+        lyrics: ''
       },
       {
         title: 'Bang Bang',
         artist: 'Jessie J, Ariana Grande, Nicki Minaj',
         coverURL: 'https://i.scdn.co/image/ab67616d0000b273930f686fe89425c7b6bf9a7d',
-        songURL: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d'
+        songURL: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d',
+        lyrics: ''
       },
       {
         title: 'Cupid - Twin Ver.',
         artist: 'FIFTY FIFTY',
         coverURL: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
         songURL: 'https://drive.google.com/uc?export=download&id=15WfT2xBAiNkHiCmrI1-8qGOUzymUar0B'
+        
       },
       {
         title: 'deja vu',
@@ -521,7 +692,7 @@ body {
         title: 'As It Was',
         artist: 'Harry Styles',
         coverURL: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH'
+        songURL:'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH'
       },
       {
         title: 'A Sky Full Of Stars',
@@ -546,6 +717,12 @@ body {
         artist: 'Lil Mosey',
         coverURL: 'https://i1.sndcdn.com/artworks-dIM002P13u4G-0-t500x500.jpg',
         songURL: 'https://drive.google.com/uc?export=download&id=1-7u4DijHkkL8WbeI6L9yy5yBEpvj402m'
+      },
+      {
+        title: 'What is Love?',
+        artist: 'TWICE',
+        coverURL: 'https://i.pinimg.com/originals/92/f1/6e/92f16e61f99e0820313a2b21d39f6424.jpg',
+        songURL: 'https://drive.google.com/uc?export=download&id=14Q6rGK-NvfF_az8A3NgvBJw6EN-8c7_s',
       }
       // Add more song objects as needed
     ];
@@ -707,64 +884,196 @@ body {
       playNextSong();
     });
 
-    // Event listener for progress bar
-    progressBar.addEventListener('click', (event) => {
-      const progressBarWidth = progressBar.clientWidth;
-      const clickPosition = event.offsetX;
-      const progress = (clickPosition / progressBarWidth) * 100;
-      progressBarFilled.style.width = `${progress}%`;
-      audio.currentTime = (audio.duration * progress) / 100;
-    });
+    // Existing code...
 
-    // Event listener for search bar
-    const searchInput = document.querySelector('.search-bar-input');
-    const searchCrossIcon = document.querySelector('.search-bar-cross-icon');
+// Function to update the current time of the song based on click position
+function updateCurrentTime(event) {
+  const progressBarRect = progressBar.getBoundingClientRect();
+  const clickPosition = event.clientX - progressBarRect.left;
+  const progressBarWidth = progressBarRect.width;
+  const progress = clickPosition / progressBarWidth;
+  const newTime = progress * audio.duration;
+  audio.currentTime = newTime;
+}
 
-    searchInput.addEventListener('input', () => {
-      const searchTerm = searchInput.value.toLowerCase();
-      const songItems = document.querySelectorAll('.song-list-item');
-      songItems.forEach((item) => {
-        const title = item.querySelector('.song-list-item-title').textContent.toLowerCase();
-        const artist = item.querySelector('.song-list-item-artist').textContent.toLowerCase();
-        if (title.includes(searchTerm) || artist.includes(searchTerm)) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+// Event listener for progress bar click
+progressBar.addEventListener('click', (event) => {
+  updateCurrentTime(event);
+});
 
-      if (searchTerm !== '') {
-        searchCrossIcon.classList.remove('hide');
-      } else {
-        searchCrossIcon.classList.add('hide');
-      }
-    });
+// Event listener for progress bar drag
+progressBar.addEventListener('mousemove', (event) => {
+  if (event.buttons === 1) {
+    updateCurrentTime(event);
+  }
+});
 
-    searchCrossIcon.addEventListener('click', () => {
-      searchInput.value = '';
-      searchCrossIcon.classList.add('hide');
-      const songItems = document.querySelectorAll('.song-list-item');
-      songItems.forEach((item) => {
-        item.style.display = 'flex';
-      });
-    });
+// Existing code...
 
-    // Initial rendering of the song list
+
+
+// Function to show the popup
+function showPopup() {
+  const popup = document.getElementById('popup');
+  const popupCover = document.querySelector('.popup-cover');
+  const popupLyrics = document.querySelector('.popup-lyrics');
+  const popupArtist = document.querySelector('.popup-artist');
+  const popupTitle = document.querySelector('.popup-title');
+
+  const currentSong = songListItems[currentSongIndex];
+
+  popupCover.style.backgroundImage = `url('${currentSong.coverURL}')`;
+  popupLyrics.textContent = currentSong.lyrics || 'Lyrics not available';
+  popupArtist.textContent = currentSong.artist;
+  popupTitle.textContent = currentSong.title;
+
+  popup.style.display = 'flex';
+}
+
+// Function to close the popup
+function closePopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none';
+}
+
+// Function to update the popup content when the song changes
+function updatePopupContent() {
+  const popupCover = document.querySelector('.popup-cover');
+  const popupLyrics = document.querySelector('.popup-lyrics');
+  const popupArtist = document.querySelector('.popup-artist');
+  const popupTitle = document.querySelector('.popup-title');
+
+  const currentSong = songListItems[currentSongIndex];
+
+  popupCover.style.backgroundImage = `url('${currentSong.coverURL}')`;
+  popupLyrics.textContent = currentSong.lyrics || 'Lyrics not available';
+  popupArtist.textContent = currentSong.artist;
+  popupTitle.textContent = currentSong.title;
+}
+
+// Event listener for view button
+const viewButton = document.querySelector('.view-button');
+viewButton.addEventListener('click', showPopup);
+
+// Event listener for close button in popup
+const popupCloseButton = document.querySelector('.popup-close');
+popupCloseButton.addEventListener('click', closePopup);
+
+// Function to load and play the song
+function loadAndPlaySong(index) {
+  loadSong(index);
+  playSong();
+  updatePopupContent();
+}
+
+// Update the popup content when the song changes
+function updateSongChange() {
+  updatePopupContent();
+}
+
+// Render the song list
+renderSongList();
+
+// Load and play the first song
+loadAndPlaySong(currentSongIndex);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to filter the song list based on search query
+function filterSongList(query) {
+  const filteredList = songListItems.filter((song) => {
+    const title = song.title.toLowerCase();
+    const artist = song.artist.toLowerCase();
+    const searchQuery = query.toLowerCase();
+    return title.includes(searchQuery) || artist.includes(searchQuery);
+  });
+
+  renderFilteredSongList(filteredList);
+}
+
+// Function to render the filtered song list
+function renderFilteredSongList(filteredList) {
+  songList.innerHTML = '';
+  filteredList.forEach((song, index) => {
+    const listItem = createSongListItem(song, index);
+    songList.appendChild(listItem);
+  });
+}
+
+// Function to handle search bar input
+function handleSearchInput(event) {
+  const searchQuery = event.target.value;
+  if (searchQuery.length === 0) {
     renderSongList();
+  } else {
+    filterSongList(searchQuery);
+  }
+}
 
-    // Load the first song
-    loadSong(currentSongIndex);
+// Event listener for search bar input
+const searchInput = document.querySelector('.search-bar-input');
+searchInput.addEventListener('input', handleSearchInput);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
-
-
-
-
-  
-
-
-
-    
-  
 </body>
 
 </html>
