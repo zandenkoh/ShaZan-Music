@@ -7,24 +7,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>ShaZan</title>
+  <title>ShaZan-Music</title>
   <style>
     .suggest-widget {
       position: fixed;
-      top: 20px;
+      top: 10px;
       right: 20px;
       z-index: 9999;
       cursor: pointer;
       display: flex;
       align-items: center;
       text-decoration: none;
+      width: 100px;
+      height: 30px;
     }
 
     .suggest-widget-icon {
       background-color: #000000;
       color: #fff;
       padding: 10px;
-      border-radius: 50%;
+      border-radius: 45%;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       font-size: 24px;
       margin-right: 5px;
@@ -35,6 +37,12 @@
       font-size: 14px;
       font-weight: bold;
     }
+
+    .suggest-widget:hover {
+        box-shadow: #000000;
+        transition: 0 2px 5px rgba(0, 0, 0, 10);
+    }
+
   </style>
 </head>
 
@@ -47,13 +55,8 @@
   </a>
 
   <!-- Your website scripts -->
-
-
-
   <script>
-
-
-    checkAuthentication();
+       checkAuthentication();
     
     
     
@@ -82,22 +85,14 @@
     
     
     
-    
-    </script>
+  
+  </script>
+  
+  
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -219,75 +214,6 @@
       });
     });
   </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -546,7 +472,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  box-shadow: -2px 0 4px rgba(255, 255, 255, 0.2);
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .popup-artist {
@@ -566,7 +492,7 @@
   font-weight: bold;
   font-size: 16px;
   line-height: 1.5;
-  color: #333;
+  color: #000000;
   margin-top: 20px;
   overflow-y: auto;
 }
@@ -581,8 +507,73 @@
   font-weight: bold;
   cursor: pointer;
   color: #ffffff;
+  margin-top: 100px;
 }
 
+
+
+
+
+
+
+
+
+
+
+.control-panel-button.loop-button {
+  background-color: #525252;
+  color: #ffffff;
+  background-position: 0 0;
+  
+}
+
+
+
+.control-panel-button.loop-button:hover {
+  background-color: #8000ff;
+}
+
+.control-panel-button.loop-button.active {
+  background-color: #4535ec;
+  background: linear-gradient(to right, #8000ff, #4000ff, #009dff);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.context-menu {
+  display: none;
+  position: fixed;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 8px;
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+.context-menu-option {
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #000000;
+}
+
+.context-menu-option:hover {
+  background-color: #f2f2f2;
+}
 
 
 
@@ -596,8 +587,9 @@
       <h1 class="sidebar-header">ShaZan</h1>
       <ul class="sidebar-menu">
         <li class="sidebar-menu-item">
-          <ahref="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGqIF9uovlr8bkMqQbO__ceyAMPYtj2zD5p70SDqR6_JoqzQ/viewform?usp=sf_link" class="sidebar-menu-link">Feedback</a>
         </li>
+        
       </ul>
     </div>
     <div class="main-content">
@@ -618,13 +610,24 @@
         </div>
       </div>
       <div class="control-panel">
-        <button class="control-panel-button previous-button"><i class="fa fa-backward"></i></button>
-        <button class="control-panel-button play-pause-button"><i class="fa fa-play"></i></button>
-        <button class="control-panel-button next-button"><i class="fa fa-forward"></i></button>
-        <button class="control-panel-button view-button" onclick="showPopup()"><i class="fa fa-eye"></i> View</button>
+        <button class="control-panel-button previous-button">
+          <i class="fa fa-backward"></i>
+        </button>
+        <button class="control-panel-button play-pause-button">
+          <i class="fa fa-play"></i>
+        </button>
+        <button class="control-panel-button next-button">
+          <i class="fa fa-forward"></i>
+        </button>
+        <button class="control-panel-button loop-button" onclick="toggleLoop()">
+          <i class="fa fa-infinity"></i>
+        </button>
+        
+        <button class="control-panel-button view-button" onclick="showPopup()">
+          <i class="fa fa-eye"></i> View
+        </button>
       </div>
-    </div>
-  </div>
+      
 
   
 
@@ -641,250 +644,246 @@
       <div class="popup-close" onclick="closePopup()">&times;</div>
     </div>
   </div>
+
+
+
+  <div class="context-menu">
+    <div class="context-menu-option" onclick="toggleLoop()">Loop</div>
+  </div>
   
+
   
-  
+
 
 
   <script>
     // Existing code here...
-    const songListItems = [
-      {
-        title: 'Among Us - Trap Remix',
-        artist: 'Leonz',
-        coverURL: 'https://i.scdn.co/image/ab67616d0000b273081ab39e5243d9edf97872d1',
-        songURL: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC',
-        lyrics: ''
-      },
-      {
-        title: 'Bang Bang',
-        artist: 'Jessie J, Ariana Grande, Nicki Minaj',
-        coverURL: 'https://i.scdn.co/image/ab67616d0000b273930f686fe89425c7b6bf9a7d',
-        songURL: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d',
-        lyrics: ''
-      },
-      {
-        title: 'Cupid - Twin Ver.',
-        artist: 'FIFTY FIFTY',
-        coverURL: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=15WfT2xBAiNkHiCmrI1-8qGOUzymUar0B'
-        
-      },
-      {
-        title: 'deja vu',
-        artist: 'Olivia Rodrigo',
-        coverURL: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
-        songURL: 'https://drive.google.com/uc?export=download&id=1gMvk-MbypZtp1AmHI_-OXHjpTWT4PbDf'
-      },
-      {
-        title: 'Sunshine',
-        artist: 'Liam Payne',
-        coverURL: 'https://www.filmmusicsite.com/images/covers/large/94638.jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=15hXPghy0bv39aUvO0Zvl4SU6pK5Uiu4_'
-      },
-      {
-        title: 'Call Me Maybe',
-        artist: 'Carly Rae Jepson',
-        coverURL: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
-        songURL: 'https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL'
-      },
-      {
-        title: 'As It Was',
-        artist: 'Harry Styles',
-        coverURL: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
-        songURL:'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH'
-      },
-      {
-        title: 'A Sky Full Of Stars',
-        artist: 'Coldplay',
-        coverURL: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
-        songURL: 'https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS'
-      },
-      {
-        title: 'I Wanna Be Yours',
-        artist: 'Arctic Monkeys',
-        coverURL: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-'
-      },
-      {
-        title: 'Daylight',
-        artist: 'David Kushner',
-        coverURL: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
-        songURL: 'https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB'
-      },
-      {
-        title: 'Blueberry Faygo',
-        artist: 'Lil Mosey',
-        coverURL: 'https://i1.sndcdn.com/artworks-dIM002P13u4G-0-t500x500.jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=1-7u4DijHkkL8WbeI6L9yy5yBEpvj402m'
-      },
-      {
-        title: 'What is Love?',
-        artist: 'TWICE',
-        coverURL: 'https://i.pinimg.com/originals/92/f1/6e/92f16e61f99e0820313a2b21d39f6424.jpg',
-        songURL: 'https://drive.google.com/uc?export=download&id=14Q6rGK-NvfF_az8A3NgvBJw6EN-8c7_s',
-      }
-      // Add more song objects as needed
-    ];
-
-    const songList = document.querySelector('.song-list');
-    const previousButton = document.querySelector('.previous-button');
-    const playPauseButton = document.querySelector('.play-pause-button');
-    const nextButton = document.querySelector('.next-button');
-    const progressBar = document.querySelector('.progress-bar');
-    const progressBarFilled = document.querySelector('.progress-bar-filled');
-    const currentTime = document.querySelector('.current-time');
-    const totalDuration = document.querySelector('.total-duration');
-
-    let currentSongIndex = 0;
-    let isPlaying = false;
-    let audio = new Audio();
-
-    // Function to create a song list item
+const songListItems = [
+  {
+    title: 'Among Us - Trap Remix',
+    artist: 'Leonz',
+    coverURL: 'https://i.scdn.co/image/ab67616d0000b273081ab39e5243d9edf97872d1',
+    songURL: 'https://drive.google.com/uc?export=download&id=1Cg9xFYJA1z5qFMlHbww9khrUiL1AclZC',
+    lyrics: `She got a body like an hourglass<br>
+      &nbsp;&nbsp;But I can give it to you all the time<br>
+      &nbsp;&nbsp;She got a booty like a Cadillac<br>
+      &nbsp;&nbsp;But I can send you into overdrive, oh`
+  },
+  {
+    title: 'Bang Bang',
+    artist: 'Jessie J, Ariana Grande, Nicki Minaj',
+    coverURL: 'https://i.scdn.co/image/ab67616d0000b273930f686fe89425c7b6bf9a7d',
+    songURL: 'https://drive.google.com/uc?export=download&id=15Gg3zsYDzLuxdNHHhLKHwHnKhTBUfO_d',
+    lyrics: 'She got a body like an hourglass<br>&nbsp;&nbsp;But I can give it to you all the time She got a booty like a Cadillac But I can send you into overdrive, oh'
+  },
+  {
+    title: 'Cupid - Twin Ver.',
+    artist: 'FIFTY FIFTY',
+    coverURL: 'https://mp3hugs.com/wp-content/uploads/2023/04/FIFTY-FIFTY-Cupid-Twin-Version.jpg',
+    songURL: 'https://drive.google.com/uc?export=download&id=15WfT2xBAiNkHiCmrI1-8qGOUzymUar0B'
     
-    function createSongListItem(song, index) {
-      const listItem = document.createElement('li');
-      listItem.classList.add('song-list-item');
-      if (index === currentSongIndex) {
-        listItem.classList.add('active');
-      }
+  },
+  {
+    title: 'deja vu',
+    artist: 'Olivia Rodrigo',
+    coverURL: 'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',
+    songURL: 'https://drive.google.com/uc?export=download&id=1gMvk-MbypZtp1AmHI_-OXHjpTWT4PbDf'
+  },
+  {
+    title: 'Sunshine',
+    artist: 'Liam Payne',
+    coverURL: 'https://www.filmmusicsite.com/images/covers/large/94638.jpg',
+    songURL: 'https://drive.google.com/uc?export=download&id=15hXPghy0bv39aUvO0Zvl4SU6pK5Uiu4_'
+  },
+  {
+    title: 'Call Me Maybe',
+    artist: 'Carly Rae Jepson',
+    coverURL: 'https://i.scdn.co/image/ab67616d0000b273a111f7769013f1731e9c697c',
+    songURL: 'https://drive.google.com/uc?export=download&id=1HWUTfvom2cjNGo0Oq2kapFErh1DhxYOL'
+  },
+  {
+    title: 'As It Was',
+    artist: 'Harry Styles',
+    coverURL: 'https://assets.vogue.com/photos/623b4f0174ede191983e2c76/master/w_2560%2Cc_limit/unnamed%2520(3).jpg',
+    songURL:'https://drive.google.com/uc?export=download&id=1FuwlkGYnlCpVWCGvVpmqlG4aaD29R_AH'
+  },
+  {
+    title: 'A Sky Full Of Stars',
+    artist: 'Coldplay',
+    coverURL: 'https://bwhsfalconflyer.com/wp-content/uploads/2022/03/cold-900x900.jpeg',
+    songURL: 'https://drive.google.com/uc?export=download&id=1MQ4jVp6kQVqhOrPHsKW3Dz1nVN7PzdeS'
+  },
+  {
+    title: 'I Wanna Be Yours',
+    artist: 'Arctic Monkeys',
+    coverURL: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg',
+    songURL: 'https://drive.google.com/uc?export=download&id=1RR7aLI3QM_1yoxGWcqteTkaitgOrr8K-'
+  },
+  {
+    title: 'Daylight',
+    artist: 'David Kushner',
+    coverURL: 'https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png',
+    songURL: 'https://drive.google.com/uc?export=download&id=135aKPmedzTNfvUvpOj063PNnZ17I1spB'
+  },
+  {
+    title: 'Blueberry Faygo',
+    artist: 'Lil Mosey',
+    coverURL: 'https://i1.sndcdn.com/artworks-dIM002P13u4G-0-t500x500.jpg',
+    songURL: 'https://drive.google.com/uc?export=download&id=1-7u4DijHkkL8WbeI6L9yy5yBEpvj402m'
+  },
+  {
+    title: 'What is Love?',
+    artist: 'TWICE',
+    coverURL: 'https://i.pinimg.com/originals/92/f1/6e/92f16e61f99e0820313a2b21d39f6424.jpg',
+    songURL: 'https://drive.google.com/uc?export=download&id=14Q6rGK-NvfF_az8A3NgvBJw6EN-8c7_s',
+  }
+  // Add more song objects as needed
+];
 
-      const image = document.createElement('img');
-      image.classList.add('song-list-item-image');
-      image.src = song.coverURL;
-      image.alt = 'Song Cover';
-      listItem.appendChild(image);
+const songList = document.querySelector('.song-list');
+const previousButton = document.querySelector('.previous-button');
+const playPauseButton = document.querySelector('.play-pause-button');
+const nextButton = document.querySelector('.next-button');
+const progressBar = document.querySelector('.progress-bar');
+const progressBarFilled = document.querySelector('.progress-bar-filled');
+const currentTime = document.querySelector('.current-time');
+const totalDuration = document.querySelector('.total-duration');
 
-      const infoDiv = document.createElement('div');
-      infoDiv.classList.add('song-list-item-info');
-      listItem.appendChild(infoDiv);
+let currentSongIndex = 0;
+let isPlaying = false;
+let audio = new Audio();
 
-      const titleDiv = document.createElement('div');
-      titleDiv.classList.add('song-list-item-title');
-      titleDiv.textContent = song.title;
-      infoDiv.appendChild(titleDiv);
+// Function to create a song list item
 
-      const artistDiv = document.createElement('div');
-      artistDiv.classList.add('song-list-item-artist');
-      artistDiv.textContent = song.artist;
-      infoDiv.appendChild(artistDiv);
+function createSongListItem(song, index) {
+  const listItem = document.createElement('li');
+  listItem.classList.add('song-list-item');
+  if (index === currentSongIndex) {
+    listItem.classList.add('active');
+  }
 
-      listItem.addEventListener('click', () => {
-        if (index !== currentSongIndex) {
-          loadSong(index);
-          playSong();
-        }
-      });
+  const image = document.createElement('img');
+  image.classList.add('song-list-item-image');
+  image.src = song.coverURL;
+  image.alt = 'Song Cover';
+  listItem.appendChild(image);
 
-      return listItem;
-    }
+  const infoDiv = document.createElement('div');
+  infoDiv.classList.add('song-list-item-info');
+  listItem.appendChild(infoDiv);
 
-    // Function to render the song list
-    function renderSongList() {
-      songListItems.forEach((song, index) => {
-        const listItem = createSongListItem(song, index);
-        songList.appendChild(listItem);
-      });
-    }
+  const titleDiv = document.createElement('div');
+  titleDiv.classList.add('song-list-item-title');
+  titleDiv.textContent = song.title;
+  infoDiv.appendChild(titleDiv);
 
-    // Function to load a song
-    function loadSong(songIndex) {
-      const song = songListItems[songIndex];
-      const image = document.querySelector('.song-list-item-image');
-      const title = document.querySelector('.song-list-item-title');
-      const artist = document.querySelector('.song-list-item-artist');
+  const artistDiv = document.createElement('div');
+  artistDiv.classList.add('song-list-item-artist');
+  artistDiv.textContent = song.artist;
+  infoDiv.appendChild(artistDiv);
 
-      audio.src = song.songURL;
-      image.src = song.coverURL;
-      title.textContent = song.title;
-      artist.textContent = song.artist;
-      progressBarFilled.style.width = '0%';
-
-      audio.addEventListener('loadedmetadata', () => {
-        totalDuration.textContent = formatTime(audio.duration);
-      });
-
-      audio.addEventListener('timeupdate', () => {
-        const progress = (audio.currentTime / audio.duration) * 100;
-        progressBarFilled.style.width = `${progress}%`;
-        currentTime.textContent = formatTime(audio.currentTime);
-      });
-
-      audio.addEventListener('ended', () => {
-        playNextSong();
-      });
-
-      currentSongIndex = songIndex;
-      highlightCurrentSong();
-    }
-
-    // Function to play the current song
-    function playSong() {
-      audio.play();
-      isPlaying = true;
-      playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
-    }
-
-    // Function to pause the current song
-    function pauseSong() {
-      audio.pause();
-      isPlaying = false;
-      playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
-    }
-
-    // Function to play the next song
-    function playNextSong() {
-      currentSongIndex = (currentSongIndex + 1) % songListItems.length;
-      loadSong(currentSongIndex);
+  listItem.addEventListener('click', () => {
+    if (index !== currentSongIndex) {
+      loadSong(index);
       playSong();
     }
+  });
 
-    // Function to play the previous song
-    function playPreviousSong() {
-      currentSongIndex = (currentSongIndex - 1 + songListItems.length) % songListItems.length;
-      loadSong(currentSongIndex);
-      playSong();
+  return listItem;
+}
+
+// Function to render the song list
+function renderSongList() {
+  songListItems.forEach((song, index) => {
+    const listItem = createSongListItem(song, index);
+    songList.appendChild(listItem);
+  });
+}
+
+// Function to load a song
+function loadSong(songIndex) {
+  const song = songListItems[songIndex];
+  const image = document.querySelector('.song-list-item-image');
+  const title = document.querySelector('.song-list-item-title');
+  const artist = document.querySelector('.song-list-item-artist');
+
+  audio.src = song.songURL;
+  image.src = song.coverURL;
+  title.textContent = song.title;
+  artist.textContent = song.artist;
+  progressBarFilled.style.width = '0%';
+
+  audio.addEventListener('loadedmetadata', () => {
+    totalDuration.textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBarFilled.style.width = `${progress}%`;
+    currentTime.textContent = formatTime(audio.currentTime);
+  });
+
+  audio.addEventListener('ended', () => {
+    playNextSong();
+  });
+
+  currentSongIndex = songIndex;
+  highlightCurrentSong();
+}
+
+// Function to play the current song
+function playSong() {
+  audio.play();
+  isPlaying = true;
+  playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+}
+
+// Function to pause the current song
+function pauseSong() {
+  audio.pause();
+  isPlaying = false;
+  playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
+}
+
+// Function to format time in minutes and seconds
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Function to highlight the current song in the list
+function highlightCurrentSong() {
+  const songItems = document.querySelectorAll('.song-list-item');
+  songItems.forEach((item, index) => {
+    if (index === currentSongIndex) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
     }
+  });
+}
 
-    // Function to format time in minutes and seconds
-    function formatTime(time) {
-      const minutes = Math.floor(time / 60);
-      const seconds = Math.floor(time % 60);
-      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }
+// Event listener for previous button
+previousButton.addEventListener('click', () => {
+  playPreviousSong();
+});
 
-    // Function to highlight the current song in the list
-    function highlightCurrentSong() {
-      const songItems = document.querySelectorAll('.song-list-item');
-      songItems.forEach((item, index) => {
-        if (index === currentSongIndex) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-    }
+// Event listener for play/pause button
+playPauseButton.addEventListener('click', () => {
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});
 
-    // Event listener for previous button
-    previousButton.addEventListener('click', () => {
-      playPreviousSong();
-    });
+// Event listener for next button
+nextButton.addEventListener('click', () => {
+  playNextSong();
+});
 
-    // Event listener for play/pause button
-    playPauseButton.addEventListener('click', () => {
-      if (isPlaying) {
-        pauseSong();
-      } else {
-        playSong();
-      }
-    });
-
-    // Event listener for next button
-    nextButton.addEventListener('click', () => {
-      playNextSong();
-    });
-
-    // Existing code...
+// Existing code...
 
 // Function to update the current time of the song based on click position
 function updateCurrentTime(event) {
@@ -910,8 +909,6 @@ progressBar.addEventListener('mousemove', (event) => {
 
 // Existing code...
 
-
-
 // Function to show the popup
 function showPopup() {
   const popup = document.getElementById('popup');
@@ -929,6 +926,9 @@ function showPopup() {
 
   popup.style.display = 'flex';
 }
+
+
+
 
 // Function to close the popup
 function closePopup() {
@@ -977,52 +977,242 @@ renderSongList();
 // Load and play the first song
 loadAndPlaySong(currentSongIndex);
 
+// Existing code...
 
 
-
-
-
-
-
-
-
-
-
-
-// Function to filter the song list based on search query
-function filterSongList(query) {
-  const filteredList = songListItems.filter((song) => {
-    const title = song.title.toLowerCase();
-    const artist = song.artist.toLowerCase();
-    const searchQuery = query.toLowerCase();
-    return title.includes(searchQuery) || artist.includes(searchQuery);
-  });
-
-  renderFilteredSongList(filteredList);
+// Function to play the next song
+function playNextSong() {
+  if (isLoopEnabled) {
+    loadSong(currentSongIndex);
+    playSong();
+  } else {
+    currentSongIndex = (currentSongIndex + 1) % songListItems.length;
+    loadSong(currentSongIndex);
+    playSong();
+  }
 }
 
-// Function to render the filtered song list
-function renderFilteredSongList(filteredList) {
+// Function to play the previous song
+function playPreviousSong() {
+  if (isLoopEnabled) {
+    loadSong(currentSongIndex);
+    playSong();
+  } else {
+    currentSongIndex = (currentSongIndex - 1 + songListItems.length) % songListItems.length;
+    loadSong(currentSongIndex);
+    playSong();
+  }
+}
+
+// Function to play the current song
+function playSong() {
+  audio.play();
+  isPlaying = true;
+  playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+}
+
+// Function to load and play the song
+function loadAndPlaySong(index) {
+  loadSong(index);
+  playSong();
+  updatePopupContent();
+}
+
+// Load and play the first song
+loadAndPlaySong(currentSongIndex);
+
+let isLoopEnabled = false;
+
+function toggleLoop() {
+  const loopButton = document.querySelector('.control-panel-button.loop-button');
+  isLoopEnabled = !isLoopEnabled; // Toggle the loop status
+
+  if (isLoopEnabled) {
+    loopButton.classList.add('active');
+    audio.loop = true; // Set the audio loop property to true
+  } else {
+    loopButton.classList.remove('active');
+    audio.loop = false; // Set the audio loop property to false
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const contextMenu = document.getElementById('contextMenu');
+let isContextMenuVisible = false; // Track context menu visibility
+
+function showContextMenu(event, index) {
+  event.preventDefault();
+
+  contextMenu.innerHTML = ''; // Clear previous options
+
+  const loopOption = document.createElement('div');
+  loopOption.classList.add('context-menu-option');
+  loopOption.textContent = 'Loop';
+  loopOption.addEventListener('click', () => {
+    toggleLoop();
+    hideContextMenu();
+  });
+
+  contextMenu.appendChild(loopOption);
+
+  // Position the context menu
+  contextMenu.style.left = `${event.clientX}px`;
+  contextMenu.style.top = `${event.clientY}px`;
+  contextMenu.style.display = 'block';
+  isContextMenuVisible = true;
+}
+
+function hideContextMenu() {
+  contextMenu.style.display = 'none';
+  isContextMenuVisible = false;
+}
+
+// Function to handle the context menu
+function handleContextMenu(event) {
+  event.preventDefault(); // Prevent the default browser context menu
+  const contextMenu = document.querySelector('.context-menu');
+  contextMenu.style.display = 'block';
+  contextMenu.style.top = `${event.clientY}px`;
+  contextMenu.style.left = `${event.clientX}px`;
+}
+
+// Event listener for the right-click event
+window.addEventListener('contextmenu', handleContextMenu);
+
+// Event listener to hide the context menu when clicking anywhere on the page
+window.addEventListener('click', (event) => {
+  const contextMenu = document.querySelector('.context-menu');
+  contextMenu.style.display = 'none';
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+function renderSongList() {
+  songListItems.forEach((song, index) => {
+    const listItem = createSongListItem(song, index);
+    songList.appendChild(listItem);
+
+    listItem.addEventListener('contextmenu', showContextMenu);
+    listItem.addEventListener('mouseleave', hideContextMenu);
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const searchInput = document.querySelector('.search-bar-input');
+
+function filterSongs(query) {
+  const filteredSongs = songListItems.filter((song) => {
+    const title = song.title.toLowerCase();
+    const artist = song.artist.toLowerCase();
+    return title.includes(query) || artist.includes(query);
+  });
+
+  renderFilteredSongs(filteredSongs);
+}
+
+function renderFilteredSongs(filteredSongs) {
   songList.innerHTML = '';
-  filteredList.forEach((song, index) => {
+
+  filteredSongs.forEach((song, index) => {
     const listItem = createSongListItem(song, index);
     songList.appendChild(listItem);
   });
 }
 
-// Function to handle search bar input
-function handleSearchInput(event) {
-  const searchQuery = event.target.value;
-  if (searchQuery.length === 0) {
-    renderSongList();
-  } else {
-    filterSongList(searchQuery);
-  }
+searchInput.addEventListener('input', (event) => {
+  const searchQuery = event.target.value.trim().toLowerCase();
+  filterSongs(searchQuery);
+});
+
+// Function to reset the song list to show all songs
+function resetSongList() {
+  songList.innerHTML = '';
+
+  songListItems.forEach((song, index) => {
+    const listItem = createSongListItem(song, index);
+    songList.appendChild(listItem);
+  });
 }
 
-// Event listener for search bar input
-const searchInput = document.querySelector('.search-bar-input');
-searchInput.addEventListener('input', handleSearchInput);
+// Event listener for clearing the search input
+const searchClearButton = document.querySelector('.search-bar-cross-icon');
+searchClearButton.addEventListener('click', () => {
+  searchInput.value = '';
+  resetSongList();
+});
 
 
 
@@ -1045,35 +1235,20 @@ searchInput.addEventListener('input', handleSearchInput);
 
 
 
+const loopButton = document.querySelector('.control-panel-button.loop-button');
 
+loopButton.addEventListener('click', () => {
+  loopButton.classList.add('clicked');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  setTimeout(() => {
+    loopButton.classList.remove('clicked');
+  }, 3000); // Remove the 'clicked' class after 3 seconds (3000 milliseconds)
+});
 
   </script>
 </body>
+  
 
 </html>
+
+
